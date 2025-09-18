@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Monthsary 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffe4ec, #e0fff4);
+      overflow: hidden;
+      color: #333;
+      text-align: center;
+    }.slide {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  color: #ff5e99;
+}
+
+h2 {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.btn {
+  margin-top: 20px;
+  padding: 12px 20px;
+  font-size: 1em;
+  background: #ff8fb1;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #ff5e99;
+}
+
+.images {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.images img {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+audio {
+  margin-top: 15px;
+}
+
+.hearts {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: fall 5s linear infinite;
+}
+
+.heart::before, .heart::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10%) rotate(45deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(45deg); opacity: 0; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="hearts"></div>  <!-- Slide 1 -->  <div class="slide active">
+    <h1>Happy 8th months with you 💕</h1>
+    <h2>Jan. 20 - Sept. 20</h2>
+    <button class="btn" onclick="nextSlide()">➡️</button>
+  </div>  <!-- Slide 2 -->  <div class="slide">
+    <h1>Our Song 🎶</h1>
+    <div class="images">
+      <img src="babyy.png" alt="Picture 1">
+      <img src="rubiee.png" alt="Picture 2">
+    </div>
+    <audio id="song" controls>
+      <source src="Bruno Major - Nothing (Lyrics).mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <button class="btn" onclick="nextSlide()">➡️</button>
+  </div>  <!-- Slide 3 -->  <div class="slide">
+    <img src="bouquet.jpg" alt="Rose Bouquet" style="width:200px; border-radius:15px;">
+    <h1>For You 🌹</h1>
+    <button class="btn" onclick="nextSlide()">➡️</button>
+  </div>  <!-- Slide 4 -->  <div class="slide">
+    <h1>Your Letter 💌</h1>
+    <p style="max-width: 700px; font-size: 1.1em; line-height: 1.5;">Happy 8th months to us, babyyyy! From january 20 until today, september 20, It's been 243 days since we have met(I think hehe) I am still inlove with you, hoping to be your last. We have had our fight almost everyday but that fight doesn't end us. I hope that in the future, we can always recall these moments and laugh at it while we are on a picnic date. I've always imagined my life with you in the future, with our family cats and our daughter or son, or maybe both hehe, and a big house where every part of the house is cared with love, and also a family business where we will earn enough money for ours and for the church or anything that accepts donation. I hope to have a long lasting life with you and I hope for you to not find someone else better than me. I'm sorry for all of the troubles I did, and I'm sorry for the times that I have hurted you. Please always remember that I am here and always know that I will love every part of you, even your insecurities.. I love youuuuuu so much asawa ko and I will never get tired of loving you po💖</p>
+  </div>  <script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function nextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+
+    // Hearts falling effect
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+      document.querySelector('.hearts').appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 500);
+  </script></body>
+</html>
